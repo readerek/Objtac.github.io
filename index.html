@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ObjTac - Multimodal Object Tactile Dataset</title>
+    <title>OmniVTLA: Vision-Tactile-Language-Action Model</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -16,13 +16,13 @@
         }
         
         body {
-            background-color: #f8f9fa;
+          background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
             padding: 0;
             margin: 0;
             font-family: 'Lato', sans-serif;
-            font-size: 18px; /* 增大正文字体大小 */
+            font-size: 18px;
         }
         
         .container {
@@ -31,39 +31,80 @@
             padding: 20px;
         }
         
+        /* Logo样式 */
+        .logo-container {
+          
+            text-align: right;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            height: 80px;
+            width: auto;
+            border-radius: 12px;
+
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
         header {
             text-align: center;
-            padding: 50px 20px;
+            padding: 30px 20px;
             background-color: white;
             border-radius: 12px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e8deff;
         }
         
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.2rem; /* 略微增大标题 */
+            font-size: 2.8rem;
             font-weight: 700;
             color: #2c3e50;
             margin-bottom: 20px;
             letter-spacing: 0.5px;
         }
         
+        .title-accent {
+            display: inline-block;
+        }
+        
+        .title-v {
+            color: #88cee6; /* our_blue */
+        }
+        
+        .title-t {
+            color: #e89da0; /* our_red */
+        }
+        
+        .title-l {
+            color: #b2d3a4; /* our_green */
+        }
+        
+        .title-a {
+            color: #f6c8a8; /* our_orange */
+        }
+        
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.4rem; /* 略微增大二级标题 */
+            font-size: 2.2rem;
             color: #2c3e50;
             margin: 40px 0 25px;
             text-align: center;
             padding-bottom: 15px;
-            border-bottom: 2px solid #eaecef;
+            border-bottom: 2px solid #e8deff;
             letter-spacing: 0.3px;
         }
         
         h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; /* 略微增大三级标题 */
-            color: #3498db;
+            font-size: 1.7rem;
+            color: #8a6bc9; /* 淡紫色调 */
             margin: 30px 0 20px;
             text-align: center;
         }
@@ -77,11 +118,25 @@
         }
         
         .author {
-            background: #f1f8ff;
+            background: #f1ebff;
             padding: 10px 20px;
             border-radius: 30px;
-            font-size: 1.1rem; /* 增大作者字体 */
+            font-size: 1.1rem;
             font-weight: 500;
+            color: #6b4cba;
+            border: 1px solid #d9ccff;
+        }
+        
+        .affiliations {
+            margin: 15px 0 25px;
+            font-style: italic;
+            color:#6b4cba;
+        }
+        
+        .corresponding {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #6b4cba;
         }
         
         .btn-group {
@@ -92,7 +147,7 @@
         }
         
         .btn {
-            background: #3498db;
+            background: #8a6bc9;
             color: white;
             padding: 12px 25px;
             border-radius: 30px;
@@ -102,13 +157,34 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 1.1rem; /* 增大按钮字体 */
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(138, 107, 201, 0.3);
         }
         
         .btn:hover {
-            background: #2980b9;
+            background: #7654b5;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 15px rgba(138, 107, 201, 0.4);
+        }
+        
+        .btn-paper {
+            background: #88cee6; /* our_blue */
+        }
+        
+        .btn-dataset {
+            background: #e89da0; /* our_red */
+        }
+        
+        .btn-dataset:hover {
+            background: #e89da0; 
+        }
+        
+        .btn-code {
+            background: #b2d3a4; /* our_green */
+        }
+        
+        .btn-code:hover {
+            background: #9fc191;
         }
         
         .content-section {
@@ -117,6 +193,7 @@
             padding: 40px;
             margin-bottom: 40px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e8deff;
         }
         
         .quick-nav {
@@ -128,17 +205,18 @@
         }
         
         .quick-nav a {
-            background: #eef5ff;
-            color: #3498db;
+            background: #f1ebff;
+            color: #6b4cba;
             padding: 10px 20px;
             border-radius: 20px;
             text-decoration: none;
             transition: all 0.2s ease;
-            font-size: 1rem; /* 增大导航字体 */
+            font-size: 1rem;
+            border: 1px solid #d9ccff;
         }
         
         .quick-nav a:hover {
-            background: #3498db;
+            background: #8a6bc9;
             color: white;
         }
         
@@ -150,22 +228,22 @@
         }
         
         .feature-card {
-            background: #f8fafc;
+            background: #faf7ff;
             border-radius: 12px;
             padding: 25px;
             text-align: center;
             transition: transform 0.3s ease;
-            border: 1px solid #eaecef;
+            border: 1px solid #e8deff;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 20px rgba(138, 107, 201, 0.15);
         }
         
         .feature-card i {
             font-size: 2.8rem;
-            color: #3498db;
+            color: #8a6bc9;
             margin-bottom: 20px;
         }
         
@@ -184,6 +262,7 @@
             transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
+            border: 1px solid #e8deff;
         }
         
         .video-item:hover {
@@ -228,26 +307,27 @@
             max-width: 100%;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 1px solid #eaecef;
+            border: 1px solid #e8deff;
         }
         
         .specs-table {
             width: 100%;
             border-collapse: collapse;
             margin: 25px 0;
-            font-size: 1.1rem; /* 增大表格字体 */
+            font-size: 1.1rem;
         }
         
         .specs-table th, .specs-table td {
             padding: 15px 20px;
             text-align: left;
-            border-bottom: 1px solid #eaecef;
+            border-bottom: 1px solid #e8deff;
         }
         
         .specs-table th {
-            background-color: #f8f9fa;
+            background-color: #faf7ff;
             font-weight: 600;
             font-family: 'Playfair Display', serif;
+            color: #6b4cba;
         }
         
         .overview-image {
@@ -256,6 +336,7 @@
             overflow: hidden;
             margin: 30px 0;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 1px solid #e8deff;
         }
         
         .overview-image img {
@@ -265,11 +346,11 @@
         
         .image-caption {
             padding: 15px;
-            background: #f8f9fa;
+            background: #faf7ff;
             text-align: center;
             font-style: italic;
-            color: #666;
-            font-size: 1rem; /* 增大图片说明字体 */
+            color: #6b4cba;
+            font-size: 1rem;
         }
         
         footer {
@@ -277,12 +358,12 @@
             padding: 40px 0;
             margin-top: 60px;
             color: #7f8c8d;
-            font-size: 1rem; /* 增大页脚字体 */
-            border-top: 1px solid #eaecef;
+            font-size: 1rem;
+            border-top: 1px solid #e8deff;
         }
         
         .video-info {
-            font-size: 1rem; /* 增大视频信息字体 */
+            font-size: 1rem;
             color: #666;
             margin-top: 10px;
             text-align: center;
@@ -290,8 +371,8 @@
         
         /* 新增BibTeX样式 */
         .bibtex-section {
-            background: #f8f9fa;
-            border-left: 5px solid #3498db;
+            background: #faf7ff;
+            border-left: 5px solid #8a6bc9;
             padding: 25px;
             margin: 30px 0;
             border-radius: 8px;
@@ -309,11 +390,11 @@
             margin-bottom: 20px;
             text-align: center;
             padding-bottom: 10px;
-            border-bottom: 2px solid #eaecef;
+            border-bottom: 2px solid #e8deff;
         }
         
         .copy-btn {
-            background: #3498db;
+            background: #8a6bc9;
             color: white;
             border: none;
             padding: 8px 15px;
@@ -326,7 +407,45 @@
         }
         
         .copy-btn:hover {
-            background: #2980b9;
+            background: #7654b5;
+        }
+        
+        .abstract {
+            text-align: justify;
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+        
+        .date {
+            font-size: 1rem;
+            color: #6b4cba;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        .highlight-blue {
+            color: #88cee6;
+            font-weight: bold;
+        }
+        
+        .highlight-red {
+            color: #e89da0;
+            font-weight: bold;
+        }
+        
+        .highlight-green {
+            color: #b2d3a4;
+            font-weight: bold;
+        }
+        
+        .highlight-orange {
+            color: #f6c8a8;
+            font-weight: bold;
+        }
+        
+        .highlight-purple {
+            color: #8a6bc9;
+            font-weight: bold;
         }
         
         @media (max-width: 968px) {
@@ -337,15 +456,15 @@
         
         @media (max-width: 768px) {
             body {
-                font-size: 16px; /* 移动设备上稍微减小字体 */
+                font-size: 16px;
             }
             
             h1 {
-                font-size: 2.6rem;
+                font-size: 2.2rem;
             }
             
             h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .feature-grid, .video-gallery {
@@ -374,41 +493,155 @@
                 font-size: 0.85rem;
                 padding: 15px;
             }
+            
+            .logo {
+                height: 60px;
+            }
+        }
+
+        /* 新增样式用于Real-World Experiments部分 */
+        .experiment-group {
+            margin-bottom: 50px;
+        }
+        
+        .experiment-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: #8a6bc9;
+            margin: 40px 0 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e8deff;
+        }
+        
+        .experiment-video-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: white;
+            transition: transform 0.3s ease;
+            border: 1px solid #e8deff;
+        }
+        
+        .experiment-video-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .experiment-video-container {
+            width: 100%;
+            background: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* 修改视频样式，使其宽度自适应容器 */
+        .experiment-video-container video {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            background: #000;
+            display: block;
+        }
+        .coming-soon-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 2px solid #b2d3a4;
+            display: none;
+        }
+        
+        .coming-soon-alert h3 {
+            color: #b2d3a4;
+            margin-bottom: 15px;
+        }
+        
+        .coming-soon-alert p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .close-alert {
+            background: #b2d3a4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .close-alert:hover {
+            background: #9fc191;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
         }
     </style>
 </head>
 <body>
+    <div class="overlay" id="overlay"></div>
+    <div class="coming-soon-alert" id="comingSoonAlert">
+        <h3>Coming Soon</h3>
+        <p>The code repository will be available shortly. Please check back later!</p>
+        <button class="close-alert" onclick="closeAlert()">OK</button>
+    </div>
     <div class="container">
+        <!-- Logo 放置在标题上方 -->
+        <div class="logo-container">
+            <img src="https://notes.sjtu.edu.cn/uploads/upload_26490664ab1b9ba1efe02754f687814f.png" alt="OmniVTLA Logo" class="logo">
+        </div>
+        
         <header>
-            <h1>ObjTac: Multimodal Object Tactile Dataset</h1>
+            <h1>Omni<span class="title-accent title-v">V</span><span class="title-accent title-t">T</span><span class="title-accent title-l">L</span><span class="title-accent title-a">A</span>: <span class="title-accent title-v">V</span>ision-<span class="title-accent title-t">T</span>actile-<span class="title-accent title-l">L</span>anguage-<span class="title-accent title-a">A</span>ction Model with Semantic-Aligned Tactile Sensing</h1>
             <div class="authors">
-                <div class="author">Zhengxue Cheng</div>
-                <div class="author">Yiqian Zhang</div>
-                <div class="author">Wenkang Zhang</div>
-                <div class="author">Haoyu Li</div>
-                <div class="author">Keyu Wang</div>
-                <div class="author">Li Song</div>
-              <div class="author">Hengdi Zhang</div>
-         
+                <div class="author">Zhengxue Cheng<sup>1,2,†</sup></div>
+                <div class="author">Yiqian Zhang<sup>1</sup></div>
+                <div class="author">Wenkang Zhang<sup>2</sup></div>
+                <div class="author">Haoyu Li<sup>1</sup></div>
+                <div class="author">Keyu Wang<sup>2</sup></div>
+                <div class="author">Li Song<sup>2</sup></div>
+                <div class="author">Hengdi Zhang<sup>1</sup></div>
             </div>
-            <p>Paxini Tech </p>
-           <p>Shanghai Jiao Tong University</p>
-            <div class="btn-group">
-                <a href="https://arxiv.org/abs/2508.08706" class="btn"><i class="fas fa-file-pdf"></i> Paper</a>
+            <div class="affiliations">
+                <p><sup>1</sup>Paxini Tech &nbsp; <sup>2</sup>Shanghai Jiao Tong University</p>
+            </div>
+            <div class="corresponding">
+                <p><sup>†</sup>Corresponding author</p>
+            </div>
+            <!--div class="date">
+                <p>Date: August 25, 2025</p>
+            </div-->
+             <div class="btn-group">
+                <a href="https://arxiv.org/abs/2508.08706" class="btn btn-paper"><i class="fas fa-file-pdf"></i> Paper</a>
                 <a href="#" class="btn"><i class="fas fa-database"></i> Dataset</a>
-                <a href="#" class="btn"><i class="fab fa-github"></i> Code</a>
+                <a href="javascript:void(0)" class="btn btn-code" onclick="showComingSoon()"><i class="fab fa-github"></i> Code</a>
             </div>
         </header>
 
         <div class="content-section">
-            <h2>Overview</h2>
-            <p>We introduce <strong>ObjTac</strong>, a novel multimodal dataset featuring aligned textual descriptions, video recordings, and force-based tactile data. Our collection encompasses 
-              Tactile-Vision paired samples for 56 distinct objects, systematically organized into 10 material categories</p>
-            
-            <!-- Overview Image -->
-            <div class="overview-image">
-                <img src="https://notes.sjtu.edu.cn/uploads/upload_ac8d647570e8f0c56ad8e34a651e4088.png">
-                <div class="image-caption">Figure 1: Overview of <strong>ObjTac</strong></div>
+            <h2>Abstract</h2>
+            <div class="abstract">
+                <p>Recent vision-language-action (VLA) models build upon vision-language foundations, and have achieved promising results and exhibit the possibility of task generalization in robot manipulation. However, due to the heterogeneity of tactile sensors and the difficulty of acquiring tactile data, current VLA models significantly overlook the importance of tactile perception and fail in contact-rich tasks. To address this issue, this paper proposes <span class="highlight-purple">OmniVTLA</span>, a novel architecture involving tactile sensing. Specifically, our contributions are threefold. First, our OmniVTLA features a dual-path tactile encoder framework. This framework enhances tactile perception across diverse vision-based and force-based tactile sensors by using a pretrained vision transformer (ViT) and a semantically-aligned tactile ViT (SA-ViT). Second, we introduce <span class="highlight-purple">ObjTac</span>, a comprehensive force-based tactile dataset capturing textual, visual, and tactile information for 56 objects across 10 categories. With 135K tri-modal samples, ObjTac supplements existing visuo-tactile datasets. Third, leveraging this dataset, we train a semantically-aligned tactile encoder to learn a unified tactile representation, serving as a better initialization for OmniVTLA. Real-world experiments demonstrate substantial improvements over state-of-the-art VLA baselines, achieving 96.9% success rates with grippers, (21.9% higher over baseline) and 100% success rates with dexterous hands (6.2% higher over baseline) in pick-and-place tasks. Besides, OmniVTLA significantly reduces task completion time and generates smoother trajectories through tactile sensing compared to existing VLA.</p>
             </div>
             
             <div class="quick-nav">
@@ -421,13 +654,20 @@
             </div>
         </div>
 
-      
+        <div class="content-section">
+            <h2 id="overview">Overview</h2>
+            <p>We introduce <span class="highlight-purple">ObjTac</span>, a novel multimodal dataset featuring aligned textual descriptions, video recordings, and force-based tactile data. Our collection encompasses Tactile-Vision paired samples for 56 distinct objects, systematically organized into 10 material categories.</p>
+            
+            <!-- Overview Image -->
+            <div class="overview-image">
+                <img src="https://notes.sjtu.edu.cn/uploads/upload_ac8d647570e8f0c56ad8e34a651e4088.png">
+                <div class="image-caption">Figure 1: Overview of <span class="highlight-purple">ObjTac</span></div>
+            </div>
+        </div>
 
         <div class="content-section">
             <h2 id="dataset">Dataset Details</h2>
-            <p>For each object, we conducted 2–5 interaction trials, with each trial lasting 10–60 seconds (sampled at 60 Hz). 
-              This yielded a total of <strong>270,000</strong> force data recordings. In total, we collected 135K samples with
-              paired tactile and vision data.</p>
+            <p>For each object, we conducted 2–5 interaction trials, with each trial lasting 10–60 seconds (sampled at 60 Hz). This yielded a total of <span class="highlight-purple">270,000</span> force data recordings. In total, we collected 135K samples with paired tactile and vision data.</p>
             
             <div class="feature-grid">
                 <div class="feature-card">
@@ -438,7 +678,7 @@
                 <div class="feature-card">
                     <i class="fas fa-camera"></i>
                     <h3>Sensor Information</h3>
-                    <p>Collected using Paxini Gen2 tactile sensor </p>
+                    <p>Collected using Paxini Gen2 tactile sensor</p>
                 </div>
             </div>
             
@@ -452,7 +692,7 @@
                     <td>Total Objects</td>
                     <td>56</td>
                 </tr>
-             	 <tr>
+                <tr>
                     <td>Categories</td>
                     <td>10</td>
                 </tr>
@@ -472,21 +712,19 @@
                     <td>Frequency</td>
                     <td>60 Hz</td>
                 </tr>
-         
             </table>
         </div>
-		
+        
         <div class="content-section">
             <h2 id="data-examples">Data Examples</h2>
-            <p>We capture first-person-view visual recordings at 720P resolution and 30 FPS, 
-              resulting in 252 video sequences with an average duration of 18 seconds. </p>
+            <p>We capture first-person-view visual recordings at 720P resolution and 30 FPS, resulting in 252 video sequences with an average duration of 18 seconds.</p>
             
             <div class="video-gallery">
                 <div class="video-item">
                     <div class="video-container">
                         <!-- 本地视频示例 - 请替换为实际视频路径 -->
                         <video controls>
-                            <source src="stone_combined_video.mp4" type="video/mp4">
+                            <source src="examples/stone_combined_video.mp4" type="video/mp4">
                             <source src="videos/object_a_stone.webm" type="video/webm">
                             您的浏览器不支持视频播放功能。
                         </video>
@@ -501,7 +739,7 @@
                     <div class="video-container">
                         <!-- 本地视频示例 - 请替换为实际视频路径 -->
                         <video controls>
-                            <source src="cup_lid_combined_video.mp4" type="video/mp4">
+                            <source src="examples/cup_lid_combined_video.mp4" type="video/mp4">
                             <source src="videos/object_b_plastic_lid.webm" type="video/webm">
                             您的浏览器不支持视频播放功能。
                         </video>
@@ -516,7 +754,7 @@
                     <div class="video-container">
                         <!-- 本地视频示例 - 请替换为实际视频路径 -->
                         <video controls>
-                            <source src="pen_combined_video.mp4" type="video/mp4">
+                            <source src="examples/pen_combined_video.mp4" type="video/mp4">
                             <source src="videos/object_c_pen.webm" type="video/webm">
                             您的浏览器不支持视频播放功能。
                         </video>
@@ -530,7 +768,7 @@
                     <div class="video-container">
                         <!-- 本地视频示例 - 请替换为实际视频路径 -->
                         <video controls>
-                            <source src="plier_combined_video.mp4" type="video/mp4">
+                            <source src="examples/plier_combined_video.mp4" type="video/mp4">
                             <source src="videos/object_d_plier.webm" type="video/webm">
                             您的浏览器不支持视频播放功能。
                         </video>
@@ -545,39 +783,93 @@
 
         <div class="content-section">
             <h2 id="tactile-vis">Tactile Signal Visualization</h2>
-            <p>We present temporal visualizations of tactile signals for four distinct object categories from our ObjTac dataset. 
-              These visualizations demonstrate the unique force patterns and dynamic responses 
-              captured by the <strong>Paxini Gen2 sensor</strong> during object interactions. In the global coordinate system,
-              the z-axis is perpendicular to the sensor surface and points downward, while the x and y axes are parallel to the sensor surface. </p>
+            <p>We present temporal visualizations of tactile signals for four distinct object categories from our ObjTac dataset. These visualizations demonstrate the unique force patterns and dynamic responses captured by the <span class="highlight-purple">Paxini Gen2 sensor</span> during object interactions. In the global coordinate system, the z-axis is perpendicular to the sensor surface and points downward, while the x and y axes are parallel to the sensor surface.</p>
             
             <div class="tactile-vis">
-                <h3>Rigid Object </h3>
+                <h3>Rigid Object</h3>
                 <img src="https://notes.sjtu.edu.cn/uploads/upload_21f08ed1b251131c7b63d090ad41024f.png" alt="Rigid object tactile visualization">
-                <div class="image-caption">Figure 2: The temporal  variations of tactile array force （Rigid Object）</div>
+                <div class="image-caption">Figure 2: The temporal variations of tactile array force (Rigid Object)</div>
             </div>
             <div class="tactile-vis">
               	<img src="https://notes.sjtu.edu.cn/uploads/upload_11ca5c7d10347410817150b50aae8d5d.png" alt="Rigid object tactile visualization">
-               <div class="image-caption">Figure 3: The temporal  variations of tactile total force （Rigid Object）</div>
+               <div class="image-caption">Figure 3: The temporal variations of tactile total force (Rigid Object)</div>
             </div>
             
             <div class="tactile-vis">
-                <h3>Textured Object </h3>
+                <h3>Textured Object</h3>
                 <img src="https://notes.sjtu.edu.cn/uploads/upload_a18bd5864d0d73842b2c3545fe7705e2.png" alt="Textured object tactile visualization">
-              <div class="image-caption">Figure 4: The temporal  variations of tactile array force （Textured Object）</div>
+              <div class="image-caption">Figure 4: The temporal variations of tactile array force (Textured Object)</div>
             </div>
              <div class="tactile-vis">
               	<img src="https://notes.sjtu.edu.cn/uploads/upload_309df1b8e8b776d5adb8e280f1d67df9.png" alt="Rigid object tactile visualization">
-               <div class="image-caption">Figure 5: The temporal  variations of tactile total force （Textured Object）</div>
+               <div class="image-caption">Figure 5: The temporal variations of tactile total force (Textured Object)</div>
             </div>
             <div class="tactile-vis">
-                <h3>Deformable Object </h3>
+                <h3>Deformable Object</h3>
                 <img src="https://notes.sjtu.edu.cn/uploads/upload_4d81125a4e68b655691e0b922414a21d.png" alt="Compliant object tactile visualization">
-              <div class="image-caption">Figure 6: The temporal  variations of tactile array force （Deformable Object）</div>
+              <div class="image-caption">Figure 6: The temporal variations of tactile array force (Deformable Object)</div>
             </div>
                 <div class="tactile-vis">
               	<img src="https://notes.sjtu.edu.cn/uploads/upload_6714bf127de733909fefa572a0a3cf11.png" alt="Rigid object tactile visualization">
-               <div class="image-caption">Figure 7: The temporal  variations of tactile total force （TDeformable Object）</div>
+               <div class="image-caption">Figure 7: The temporal variations of tactile total force (Deformable Object)</div>
             </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 id="applications">Real-World Experiments</h2>
+            <p>To understand the effectiveness of tactile sensing, we present some qualitative results for
+real-world experiments.  OmniVTLA uses semantic tactile cues to stabilize grasps
+and execute smooth trajectories, as seen in successful lifts of the short can using the gripper and bottle using
+the dexterous hand.</p>
+            
+            <!-- 夹爪抓取示例 -->
+            <div class="experiment-group">
+                <h3 class="experiment-title">Gripper Examples</h3>
+                <div class="video-gallery">
+                    <div class="experiment-video-item">
+                        <div class="experiment-video-container">
+                            <video controls>
+                                <source src="examples/gripper_bottle.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放功能。
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="experiment-video-item">
+                        <div class="experiment-video-container">
+                            <video controls>
+                                <source src="examples/gripper_can.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放功能。
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 灵巧手抓取示例 -->
+            <div class="experiment-group">
+                <h3 class="experiment-title">Dexterous Hand Examples</h3>
+                <div class="video-gallery">
+                    <div class="experiment-video-item">
+                        <div class="experiment-video-container">
+                            <video controls>
+                                <source src="examples/dexhand_bottle.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放功能。
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <div class="experiment-video-item">
+                        <div class="experiment-video-container">
+                            <video controls>
+                                <source src="examples/dexhand_cube.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放功能。
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
         
         <!-- 新增BibTeX引用部分 -->
@@ -594,7 +886,7 @@
 }
             </div>
             
-          
+            <button class="copy-btn" onclick="copyBibtex()">Copy BibTeX</button>
             
             <script>
                 function copyBibtex() {
@@ -611,6 +903,18 @@
                         console.error('Failed to copy: ', err);
                     });
                 }
+                 function showComingSoon() {
+                    document.getElementById('comingSoonAlert').style.display = 'block';
+                    document.getElementById('overlay').style.display = 'block';
+                }
+                
+                function closeAlert() {
+                    document.getElementById('comingSoonAlert').style.display = 'none';
+                    document.getElementById('overlay').style.display = 'none';
+                }
+                
+                // 点击遮罩层也可以关闭提示
+                document.getElementById('overlay').addEventListener('click', closeAlert);
             </script>
         </div>
     </div>
@@ -618,7 +922,7 @@
     <footer>
         <div class="container">
             <p>© 2025 Paxini Tech | Shanghai Jiao Tong University</p>
-            <p>Contact: zxcheng@sjtu.edu.cn</p>
+            <p>Contact: contact@paxinitech.com</p>
         </div>
     </footer>
 </body>
